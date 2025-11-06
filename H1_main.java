@@ -5,24 +5,23 @@ public class H1_main {
         int rating = -2;
         boolean warnhinweis = true, negativ = false;
 
+        double absoluteMonEingang = Math.abs(monEingang);
+        double absoluteGuthaben = Math.abs(guthaben);
+
         negativ = guthaben < 0;
         if (guthaben > 0) {
             rating += 3;
-        }
-        if (guthaben == 0) {
-            rating += 2;
-        }
-        double absoluteMonIncome = Math.abs(monEingang);
-        double absoluteGuthaben = Math.abs(guthaben);
-        if (guthaben < 0) {
-            if (guthaben < 0 && absoluteMonIncome >= absoluteGuthaben) {
+        } else if (guthaben < 0) {
+            if (guthaben < 0 && absoluteMonEingang >= absoluteGuthaben) {
                 rating += 1;
             } else {
                 rating -= 1;
             }
+        } else {
+            rating += 2;
         }
 
-        warnhinweis = (guthaben < 0) && (absoluteMonIncome < absoluteGuthaben) && (rating < 0);
+        warnhinweis = (guthaben < 0) && (absoluteMonEingang < absoluteGuthaben) && (rating < 0);
 
         System.out.println("Guthaben " + guthaben);
         System.out.println("MonEingang " + monEingang);
